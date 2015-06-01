@@ -163,6 +163,7 @@
 		07B74DB51B1D1EFC0064E526 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = CardGame;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Eric Peterson";
 				TargetAttributes = {
