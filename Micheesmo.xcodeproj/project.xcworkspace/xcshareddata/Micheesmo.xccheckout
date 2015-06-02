@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4D476BEE-123B-4EC4-9191-EF4D61E4FCF9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DDD7EDE7E5843F68AFB2478063113BA883137DA2</key>
+		<string>https://github.com/petey3/Micheesmo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Micheesmo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DDD7EDE7E5843F68AFB2478063113BA883137DA2</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/petey3/Micheesmo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DDD7EDE7E5843F68AFB2478063113BA883137DA2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DDD7EDE7E5843F68AFB2478063113BA883137DA2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Micheesmo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

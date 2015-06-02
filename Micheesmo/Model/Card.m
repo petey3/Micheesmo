@@ -10,7 +10,7 @@
 
 @implementation Card
 
-- (int) match:(Card *)card
+- (int) match:(Card*)card
 {
     int score = 0;
     

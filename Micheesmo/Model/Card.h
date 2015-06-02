@@ -2,6 +2,9 @@
 //  Card.h
 //  Micheesmo
 //
+//  Card:
+//  The model for a card in a generic card-game. 
+//
 //  Created by Eric Peterson on 6/1/15.
 //  Copyright (c) 2015 Eric Peterson. All rights reserved.
 //
@@ -11,12 +14,11 @@
 @interface Card : NSObject
 
 //Properties
-@property (strong, nonatomic) NSString *contents;
+@property (strong, nonatomic) NSString* contents;
 @property (nonatomic, getter=isChosen) BOOL chosen;
 @property (nonatomic, getter=isMatched) BOOL matched;
 
-//Methods
-
+//Instance Methods
 /*! Match
  @discussion How good of a "match" is the given card to this card?
  @return quality of match: 0 is no match, >0 is increasingly better
