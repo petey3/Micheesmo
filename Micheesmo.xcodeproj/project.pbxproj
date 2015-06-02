@@ -17,6 +17,7 @@
 		07B74DEB1B1D24DF0064E526 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B74DEA1B1D24DF0064E526 /* Card.m */; };
 		07B74DEE1B1D343C0064E526 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B74DED1B1D343C0064E526 /* Deck.m */; };
 		07B74DF11B1D4C600064E526 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B74DF01B1D4C600064E526 /* PlayingCard.m */; };
+		07B74DF41B1D58AC0064E526 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B74DF31B1D58AC0064E526 /* PlayingCardDeck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		07B74DED1B1D343C0064E526 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Deck.m; path = Model/Deck.m; sourceTree = "<group>"; };
 		07B74DEF1B1D4C600064E526 /* PlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingCard.h; path = Model/PlayingCard.h; sourceTree = "<group>"; };
 		07B74DF01B1D4C600064E526 /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayingCard.m; path = Model/PlayingCard.m; sourceTree = "<group>"; };
+		07B74DF21B1D58AC0064E526 /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingCardDeck.h; path = Model/PlayingCardDeck.h; sourceTree = "<group>"; };
+		07B74DF31B1D58AC0064E526 /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayingCardDeck.m; path = Model/PlayingCardDeck.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +140,8 @@
 				07B74DEC1B1D343C0064E526 /* Deck.h */,
 				07B74DED1B1D343C0064E526 /* Deck.m */,
 				07B74DEF1B1D4C600064E526 /* PlayingCard.h */,
+				07B74DF21B1D58AC0064E526 /* PlayingCardDeck.h */,
+				07B74DF31B1D58AC0064E526 /* PlayingCardDeck.m */,
 				07B74DF01B1D4C600064E526 /* PlayingCard.m */,
 			);
 			name = Model;
@@ -247,6 +252,7 @@
 				07B74DEE1B1D343C0064E526 /* Deck.m in Sources */,
 				07B74DC91B1D1EFC0064E526 /* CardGameViewController.m in Sources */,
 				07B74DC61B1D1EFC0064E526 /* CardGameAppDelegate.m in Sources */,
+				07B74DF41B1D58AC0064E526 /* PlayingCardDeck.m in Sources */,
 				07B74DC31B1D1EFC0064E526 /* main.m in Sources */,
 				07B74DEB1B1D24DF0064E526 /* Card.m in Sources */,
 			);
