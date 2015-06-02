@@ -26,6 +26,9 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="145" y="225" width="110" height="150"/>
                                 </variation>
+                                <connections>
+                                    <action selector="touchCardButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FKy-Sf-Gvc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.061973138181326964" green="0.50196081399917603" blue="0.27778345638378377" alpha="1" colorSpace="calibratedRGB"/>
