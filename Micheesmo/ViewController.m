@@ -9,12 +9,21 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+//Properties
+@property (weak, nonatomic) IBOutlet UILabel* flipsLabel;
+@property (nonatomic) int flipCount;
 @end
 
 @implementation ViewController
 
-- (IBAction)touchCardButton:(UIButton *)sender
+- (void)setFlipCount:(int)flipCount
+{
+    _flipCount = flipCount;
+    NSString* count = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
+    self.flipsLabel.text = count;
+}
+
+- (IBAction)touchCardButton:(UIButton*)sender
 {
     UIImage* cardImg;// = [UIImage imageNamed:@"card back"];
     NSString* title;
@@ -33,6 +42,8 @@
     //Set the image and title
     [sender setBackgroundImage:cardImg forState:UIControlStateNormal];
     [sender setTitle:title forState:UIControlStateNormal];
+    
+    self.flipCount++;
 }
 
 @end
