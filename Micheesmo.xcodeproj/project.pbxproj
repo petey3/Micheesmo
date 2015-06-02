@@ -14,6 +14,7 @@
 		07B74DCE1B1D1EFC0064E526 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B74DCD1B1D1EFC0064E526 /* Images.xcassets */; };
 		07B74DD11B1D1EFC0064E526 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B74DCF1B1D1EFC0064E526 /* LaunchScreen.xib */; };
 		07B74DDD1B1D1EFC0064E526 /* MicheesmoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B74DDC1B1D1EFC0064E526 /* MicheesmoTests.m */; };
+		07B74DEB1B1D24DF0064E526 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B74DEA1B1D24DF0064E526 /* Card.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		07B74DD61B1D1EFC0064E526 /* MicheesmoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MicheesmoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B74DDB1B1D1EFC0064E526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07B74DDC1B1D1EFC0064E526 /* MicheesmoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MicheesmoTests.m; sourceTree = "<group>"; };
+		07B74DE91B1D24DF0064E526 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Model/Card.h; sourceTree = "<group>"; };
+		07B74DEA1B1D24DF0064E526 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Model/Card.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 		07B74DE61B1D23960064E526 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				07B74DE91B1D24DF0064E526 /* Card.h */,
+				07B74DEA1B1D24DF0064E526 /* Card.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				07B74DC91B1D1EFC0064E526 /* CardGameViewController.m in Sources */,
 				07B74DC61B1D1EFC0064E526 /* CardGameAppDelegate.m in Sources */,
 				07B74DC31B1D1EFC0064E526 /* main.m in Sources */,
+				07B74DEB1B1D24DF0064E526 /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
