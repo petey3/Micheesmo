@@ -15,7 +15,7 @@
 - (NSString*) contents
 {
     //TODO: figure out why it wants to cast as UL
-    return [NSString stringWithFormat:@"%lu%@", (unsigned long)self.rank, self.suit];
+    return [NSString stringWithFormat:@"%@%@", [PlayingCard rankStrings][self.rank], self.suit];
 }
 
 @synthesize suit = _suit;

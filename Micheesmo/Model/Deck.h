@@ -15,6 +15,7 @@
 @interface Deck : NSObject
 
 //Properties
+@property (nonatomic) NSUInteger size; //how many cards in the deck
 
 //Instance Methods
 /*! addCard atTop

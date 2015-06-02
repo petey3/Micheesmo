@@ -21,7 +21,7 @@
         for (NSString* suit in [PlayingCard validSuits])
         {
             //make a card for each rank (exclude "?")
-            for (NSUInteger rank = 1; rank < [PlayingCard maxRank]; rank++)
+            for (NSUInteger rank = 1; rank <= [PlayingCard maxRank]; rank++)
             {
                 PlayingCard* card = [[PlayingCard alloc] init];
                 card.rank = rank;
@@ -30,7 +30,7 @@
             }
         }
     }
-    
+    NSLog(@"Deck of %lu made", (unsigned long)self.size);
     return self;
 }
 
