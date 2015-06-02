@@ -15,7 +15,16 @@
 - (NSString*) contents
 {
     //TODO: figure out why it wants to cast as UL
-    return [NSString stringWithFormat:@"%@%@", [PlayingCard rankStrings][self.rank], self.suit];
+    NSString* rankString = [PlayingCard rankStrings][self.rank];
+    return [NSString stringWithFormat:@"%@%@", rankString, self.suit];
+}
+
+- (int) match:(PlayingCard*)card
+{
+    int score = 0;
+    if(card.rank == self.rank) { score = 4; }
+    else if([card.suit isEqualToString:self.suit]) { score = 1; }
+    return score;
 }
 
 @synthesize suit = _suit;

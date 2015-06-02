@@ -7,58 +7,26 @@
 //
 
 #import "ViewController.h"
-#import "Deck.h"
 #import "PlayingCardDeck.h"
+#import "CardMatchingGame.h"
 
 @interface ViewController ()
 //Properties
-@property (weak, nonatomic) IBOutlet UILabel* flipsLabel;
-@property (nonatomic) int flipCount;
-@property (strong, nonatomic) Deck* cardDeck;
+@property (strong, nonatomic) CardMatchingGame* gameLogic;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray* cardButtons;
+@property (weak, nonatomic) IBOutlet UILabel* scoreLabel;
 @end
 
 @implementation ViewController
 
-- (Deck*) cardDeck
+- (CardMatchingGame*) gameLogic
 {
-    if(!_cardDeck) _cardDeck = [[PlayingCardDeck alloc]init];
-    return _cardDeck;
+    if(!_gameLogic) _gameLogic = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count] usingDeck:[self createDeck]];
+    return _gameLogic;
 }
 
-- (void)setFlipCount:(int)flipCount
-{
-    _flipCount = flipCount;
-    NSString* count = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
-    self.flipsLabel.text = count;
-}
-
-- (IBAction)touchCardButton:(UIButton*)sender
-{
-    UIImage* cardFront = [UIImage imageNamed:@"card front"];
-    UIImage* cardBack = [UIImage imageNamed:@"card back"];
-    
-    //First check that we can flip
-    if(![self.cardDeck size])
-    {
-        [self setCard:sender title:@"" bgImg:cardBack];
-        sender.enabled = NO;
-        return;
-    }
-
-    //Assign new image and card based on the current ones
-    if([sender.currentTitle length])
-    {
-        [self setCard:sender title:@"" bgImg:cardBack];
-    }
-    else
-    {
-        //Select a random card and display rank&suit
-        Card* card = [self.cardDeck drawRandomCard];
-        [self setCard:sender title:card.contents bgImg:cardFront];
-    }
-    
-    self.flipCount++;
-}
+//we use deck creation in our gameLogic init, so its a helper
+- (Deck*) createDeck { return [[PlayingCardDeck alloc]init]; }
 
 /*!
  setCard
@@ -70,6 +38,32 @@
     //Set the image and title
     [sender setBackgroundImage:img forState:UIControlStateNormal];
     [sender setTitle:title forState:UIControlStateNormal];
+}
+
+- (IBAction)touchCardButton:(UIButton*)sender
+{
+    NSUInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
+    [self.gameLogic chooseCardAtIndex:chosenButtonIndex];
+    [self updateUI];
+}
+
+- (void) updateUI
+{
+    for(UIButton* button in self.cardButtons)
+    {
+        NSUInteger cardBtnIndex = [self.cardButtons indexOfObject:button];
+        Card* card = [self.gameLogic getCardAtIndex:cardBtnIndex];
+        //figure out what should be displayed on the card
+        NSString* title = card.isChosen ? card.contents : @"";
+        UIImage* img = [UIImage imageNamed:card.isChosen ? @"card front" : @"card back"];
+        [self setCard:button title:title bgImg:img];
+        
+        //Update buttons based on their match state
+        button.enabled = !card.isMatched;
+        
+        //Update text
+        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %li", (long)self.gameLogic.score];
+    }
 }
 
 @end
