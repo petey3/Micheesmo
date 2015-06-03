@@ -58,7 +58,7 @@ static const int COST_TO_CHOOSE = 1;
         if(card) { [self.cards addObject:card]; }
         else {return NO;}
     }
-    
+    self.gameStarted = NO; //only start once first card is selected
     self.score = 0; //should do this by default
     return YES;
 }
@@ -108,6 +108,14 @@ static const int COST_TO_CHOOSE = 1;
 {
     BOOL inBounds = index < [self.cards count];
     return inBounds ? self.cards[index] : nil;
+}
+
+//setGameMode
+- (void) setGameMode:(NSInteger)count
+{
+    //we let them give us any number but we know
+    //(for now) we just want 2 or 3. So "round" it
+    _matchMode = (count <= 2) ? 2 : 3;
 }
 
 @end

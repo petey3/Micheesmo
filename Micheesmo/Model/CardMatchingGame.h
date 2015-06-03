@@ -17,6 +17,8 @@
 
 //Properties
 @property (readonly, nonatomic) NSInteger score;
+@property (nonatomic) BOOL gameStarted; //lock in game mode if YES
+@property (nonatomic, setter=setGameMode:) NSInteger matchMode;
 
 //Instance Methods
 /*!

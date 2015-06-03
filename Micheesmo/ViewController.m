@@ -15,7 +15,8 @@
 @property (strong, nonatomic) CardMatchingGame* gameLogic;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray* cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel* scoreLabel;
-@property (weak, nonatomic) IBOutlet UIButton *restartButton;
+@property (weak, nonatomic) IBOutlet UIButton* restartButton;
+@property (weak, nonatomic) IBOutlet UISegmentedControl* gameModeControl;
 @end
 
 @implementation ViewController
@@ -44,6 +45,13 @@
 //mark a card as chosen
 - (IBAction)touchCardButton:(UIButton*)sender
 {
+    //If this is the first card touch, mark game as started
+    if(!self.gameLogic.gameStarted)
+    {
+        self.gameLogic.gameStarted = YES;
+        self.gameModeControl.enabled = NO;
+    }
+    
     NSUInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
     [self.gameLogic chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
@@ -54,9 +62,17 @@
 {
     //the restart message handles repopulating deck and wiping score
     [self.gameLogic freshGame:[self.cardButtons count] usingDeck:[self createDeck]];
+    self.gameModeControl.enabled = YES; //allow people to pick the mode
     [self updateUI];
 }
 
+//select the game mode (2 vs 3 card match)
+- (IBAction)selectGameMode:(UISegmentedControl *)sender
+{
+    //We know we want 2 or 3, so simply add to the index
+    NSInteger mode = [sender selectedSegmentIndex] + 2;
+    [self.gameLogic setGameMode:mode];
+}
 
 - (void) updateUI
 {
