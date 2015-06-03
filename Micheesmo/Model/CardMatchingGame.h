@@ -41,4 +41,11 @@
  */
 - (Card*) getCardAtIndex:(NSUInteger)index;
 
+/*!
+ freshGame
+ @discussion clear the game's score, and redeal the cards
+ @return success
+ */
+- (BOOL) freshGame:(NSUInteger)count usingDeck:(Deck*)deck;
+
 @end

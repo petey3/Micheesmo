@@ -37,18 +37,30 @@ static const int COST_TO_CHOOSE = 1;
     
     if(self)
     {
-        for(int c=0; c < count; c++)
-        {
-            Card* card = [deck drawRandomCard];
-            //we can't have any nil cards, so check them
-            if(card) { [self.cards addObject:card]; }
-            else {self = nil; break;}
-        }
-        
-        self.score = 0; //should do this by default
+        if(![self freshGame:count usingDeck:deck]) { self = nil; }
     }
 
     return self;
+}
+
+//freshGame
+- (BOOL) freshGame:(NSUInteger)count usingDeck:(Deck *)deck
+{
+    //wipe the cards array, will lazy init below
+    _cards = nil;
+    
+    //NOTE: this expects a new, FULL deck
+    //TODO: reinforce that so we dont get passed bad decks
+    for(int c=0; c < count; c++)
+    {
+        Card* card = [deck drawRandomCard];
+        //we can't have any nil cards, so check them
+        if(card) { [self.cards addObject:card]; }
+        else {return NO;}
+    }
+    
+    self.score = 0; //should do this by default
+    return YES;
 }
 
 //chooseCardAtIndex

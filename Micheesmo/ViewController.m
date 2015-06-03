@@ -15,6 +15,7 @@
 @property (strong, nonatomic) CardMatchingGame* gameLogic;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray* cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel* scoreLabel;
+@property (weak, nonatomic) IBOutlet UIButton *restartButton;
 @end
 
 @implementation ViewController
@@ -40,6 +41,7 @@
     [sender setTitle:title forState:UIControlStateNormal];
 }
 
+//mark a card as chosen
 - (IBAction)touchCardButton:(UIButton*)sender
 {
     NSUInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
@@ -47,12 +49,22 @@
     [self updateUI];
 }
 
+//restart the game (or redeal, as the hw states)
+- (IBAction)touchRestartButton:(UIButton*)sender
+{
+    //the restart message handles repopulating deck and wiping score
+    [self.gameLogic freshGame:[self.cardButtons count] usingDeck:[self createDeck]];
+    [self updateUI];
+}
+
+
 - (void) updateUI
 {
     for(UIButton* button in self.cardButtons)
     {
         NSUInteger cardBtnIndex = [self.cardButtons indexOfObject:button];
         Card* card = [self.gameLogic getCardAtIndex:cardBtnIndex];
+        
         //figure out what should be displayed on the card
         NSString* title = card.isChosen ? card.contents : @"";
         UIImage* img = [UIImage imageNamed:card.isChosen ? @"card front" : @"card back"];
