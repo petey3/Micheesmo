@@ -108,8 +108,14 @@
     if(matchbox.isMatchFull)
     {
         //if the match is full, print out a message reflecting the results
+        BOOL goodPlay = matchbox.matchPoints > 0;
+        
+        //Acknowledge success
+        NSString* goodStart = @"Matched ";
+        NSString* badStart = @"Tried matching ";
+        
         //Loop through chosen cards and print them out
-        NSMutableString* startMessage = [NSMutableString stringWithString:@"Chose "];
+        NSMutableString* startMessage = [NSMutableString stringWithString:(goodPlay ? goodStart : badStart)];
         for(int index=0; index < matchbox.chosenCards.count; index++)
         {
             Card* card = matchbox.chosenCards[index];
@@ -130,7 +136,21 @@
     //if not full yet, they are still "thinking"
     else
     {
-        message = @"";
+        //Loop through chosen cards and print them out
+        NSMutableString* startMessage = [NSMutableString stringWithString:@"Chose "];
+        for(int index=0; index < matchbox.chosenCards.count; index++)
+        {
+            Card* card = matchbox.chosenCards[index];
+            [startMessage appendString:card.contents];
+            if(index < matchbox.chosenCards.count - 1)[startMessage appendString:@", "];
+        }
+        
+        //Remind them how many they need
+        NSInteger remainingCards = matchbox.targetCount - matchbox.chosenCards.count;
+        NSString* endMessage = [NSString stringWithFormat:@" you need %li more.", remainingCards];
+        [startMessage appendString:endMessage];
+        
+        message = [NSString stringWithString:startMessage];
     }
     
     return message;
