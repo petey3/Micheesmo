@@ -77,6 +77,25 @@ static const int COST_TO_CHOOSE = 1;
 {
     Card* card = [self getCardAtIndex:index];
     
+    //We delay clearing until they are choosing a card on a full MatchBox
+    if(self.matchBox.isMatchFull)
+    {
+        //Set the cards to chosen or matched based on score
+        for(Card* card in self.matchBox.chosenCards)
+        {
+            BOOL state = self.matchBox.matchPoints > 0 ? YES : NO;
+            card.chosen = state;
+            card.matched = state;
+        }
+        
+        for(Card* card in self.cards)
+        {
+            if(!card.isMatched) card.chosen = NO;
+        }
+        
+        [self.matchBox clear];
+    }
+    
     if(!card.isMatched) //ignore matched cards
     {
         //toggle already chosen cards
@@ -95,10 +114,10 @@ static const int COST_TO_CHOOSE = 1;
     
     [self updateMatchBox];
     
+    //We then check if its full again after updating the MatchBox
     if(self.matchBox.isMatchFull)
     {
         self.score += self.matchBox.matchPoints;
-        [self.matchBox clear];
     }
     
     /*
@@ -181,19 +200,6 @@ static const int COST_TO_CHOOSE = 1;
         
         //The score is set elsewere, matchBox just holds onto it for now
         self.matchBox.matchPoints = maxScore > 0 ? maxScore : (-1 * MISMATCH_PENTALTY);
-        
-        //Set the cards to chosen or matched based on score
-        for(Card* card in self.matchBox.chosenCards)
-        {
-            BOOL state = self.matchBox.matchPoints > 0 ? YES : NO;
-            card.chosen = state;
-            card.matched = state;
-        }
-        
-        for(Card* card in self.cards)
-        {
-            if(!card.isMatched) card.chosen = NO;
-        }
     }
 }
 
