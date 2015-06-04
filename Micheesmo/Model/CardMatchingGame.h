@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 #import "Deck.h"
 #import "Card.h"
+#import "MatchBox.h"
 
 @interface CardMatchingGame : NSObject
 
@@ -49,5 +50,12 @@
  @return success
  */
 - (BOOL) freshGame:(NSUInteger)count usingDeck:(Deck*)deck;
+
+/*!
+ getLatestMatchState
+ @discussion calculate the current match status based on the number of cards currently chosen
+ @return a MatchBox
+ */
+- (MatchBox*) getLatestMatchState;
 
 @end

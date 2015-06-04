@@ -473,6 +473,15 @@
                                     <action selector="selectGameMode:" destination="vXZ-lx-hvc" eventType="valueChanged" id="JRB-Fb-nBu"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.25000000000000006" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="no cards selected" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR9-jj-5Zb">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="483" width="368" height="44"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.061973138181326964" green="0.50196081399917603" blue="0.27778345638378377" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
@@ -510,6 +519,7 @@
                                 <exclude reference="KGq-Oe-LXd"/>
                                 <exclude reference="kLQ-9c-Q41"/>
                                 <exclude reference="Ke0-QT-y84"/>
+                                <exclude reference="jR9-jj-5Zb"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -547,11 +557,13 @@
                                 <include reference="KGq-Oe-LXd"/>
                                 <include reference="kLQ-9c-Q41"/>
                                 <include reference="Ke0-QT-y84"/>
+                                <include reference="jR9-jj-5Zb"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="gameModeControl" destination="Ke0-QT-y84" id="PE0-yk-v2B"/>
+                        <outlet property="matchMsgLabel" destination="jR9-jj-5Zb" id="cIT-Y0-Kmy"/>
                         <outlet property="restartButton" destination="KGq-Oe-LXd" id="93Z-rG-dpl"/>
                         <outlet property="scoreLabel" destination="kLQ-9c-Q41" id="UKp-c4-jsH"/>
                         <outletCollection property="cardButtons" destination="RXf-db-UMH" id="HoW-Mb-GVc"/>

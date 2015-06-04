@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel* scoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton* restartButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl* gameModeControl;
+@property (weak, nonatomic) IBOutlet UILabel* matchMsgLabel;
 @end
 
 @implementation ViewController
@@ -49,6 +50,7 @@
     if(!self.gameLogic.gameStarted)
     {
         self.gameLogic.gameStarted = YES;
+        //force game mode selection?
         self.gameModeControl.enabled = NO;
     }
     
@@ -91,7 +93,18 @@
         
         //Update text
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %li", (long)self.gameLogic.score];
+        self.matchMsgLabel.text = [self updateMatchMsg];
     }
+}
+
+/*!
+ @discussion figure out what the match message should say by looking at the cards the game logic is currently considering
+ @return a formatted message concerning the cards and potentially points to set the label to
+ */
+- (NSString*) updateMatchMsg
+{
+    [self.gameLogic getLatestMatchState];
+    return @"";
 }
 
 @end
