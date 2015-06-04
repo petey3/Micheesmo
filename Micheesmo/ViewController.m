@@ -103,17 +103,36 @@
  */
 - (NSString*) updateMatchMsg
 {
-    MatchBox* matchbox = [self.gameLogic getLatestMatchState];
     NSString* message;
+    MatchBox* matchbox = [self.gameLogic getLatestMatchState];
     if(matchbox.isMatchFull)
     {
-        message = [NSString stringWithFormat:@"Match earned %li", matchbox.matchPoints];
+        //if the match is full, print out a message reflecting the results
+        //Loop through chosen cards and print them out
+        NSMutableString* startMessage = [NSMutableString stringWithString:@"Chose "];
+        for(int index=0; index < matchbox.chosenCards.count; index++)
+        {
+            Card* card = matchbox.chosenCards[index];
+            [startMessage appendString:card.contents];
+            if(index < matchbox.chosenCards.count - 1)[startMessage appendString:@" + "];
+        }
+        //Acknowledge points!
+        [startMessage appendFormat:@"for %li points", matchbox.matchPoints];
+        
+        //Acknowledge success
+        NSString* goodEnd = @"! \n Nice job!";
+        NSString* badEnd = @"\n ...welp. Nice try";
+        NSString* endMessage = matchbox.matchPoints > 0 ? goodEnd : badEnd;
+        [startMessage appendString:endMessage];
+        
+        message = [NSString stringWithString:startMessage];
     }
+    //if not full yet, they are still "thinking"
     else
     {
         message = @"";
     }
-       
+    
     return message;
 }
 

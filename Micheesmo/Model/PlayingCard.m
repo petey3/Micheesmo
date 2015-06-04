@@ -16,7 +16,7 @@
 {
     //TODO: figure out why it wants to cast as UL
     NSString* rankString = [PlayingCard rankStrings][self.rank];
-    return [NSString stringWithFormat:@"%@%@", rankString, self.suit];
+    return [rankString stringByAppendingString:self.suit];
 }
 
 
