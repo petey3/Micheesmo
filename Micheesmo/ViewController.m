@@ -103,8 +103,18 @@
  */
 - (NSString*) updateMatchMsg
 {
-    [self.gameLogic getLatestMatchState];
-    return @"";
+    MatchBox* matchbox = [self.gameLogic getLatestMatchState];
+    NSString* message;
+    if(matchbox.isMatchFull)
+    {
+        message = [NSString stringWithFormat:@"Match earned %li", matchbox.matchPoints];
+    }
+    else
+    {
+        message = @"";
+    }
+       
+    return message;
 }
 
 @end
