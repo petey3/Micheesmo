@@ -20,8 +20,18 @@
 
 //Getcha constants here
 static const int MISMATCH_PENTALTY = 2;
-static const int MATCH_BONUS = 4;
+static const int MATCH_BONUS = 6;
+static const int PERFECT_MULTIPLIER = 2; //multiplier for "perfect" 3-way match
 static const int COST_TO_CHOOSE = 1;
+
+@synthesize matchMode = _matchMode;
+
+//matchMode
+- (NSInteger) matchMode
+{
+    if(!_matchMode) _matchMode = 2;
+    return _matchMode;
+}
 
 //cards
 - (NSMutableArray*) cards
@@ -33,7 +43,7 @@ static const int COST_TO_CHOOSE = 1;
 //matchbox
 - (MatchBox*) matchBox
 {
-    if(!_matchBox) _matchBox = [[MatchBox alloc] initWithCount:2]; //TODO: replace with matchMode lazy getter
+    if(!_matchBox) _matchBox = [[MatchBox alloc] initWithCount:self.matchMode]; //TODO: replace with matchMode lazy getter
     return _matchBox;
 }
 
@@ -118,42 +128,6 @@ static const int COST_TO_CHOOSE = 1;
     //We then check if its full again after updating the MatchBox
     if(self.matchBox.isMatchFull) self.score += self.matchBox.matchPoints;
     
-    /*
-    if(!card.isMatched) //ignore matched cards
-    {
-        if(card.isChosen) { card.chosen = NO; }
-        else
-        {
-            //find other chosen and unmatched cards
-            for(Card* otherCard in self.cards)
-            {
-                if(otherCard.isChosen && !otherCard.isMatched)
-                {
-                    int matchScore = [card match:otherCard];
-                    if(matchScore)
-                    {
-                        card.matched = YES;
-                        otherCard.matched = YES;
-                        otherCard.chosen = YES;
-                        self.score += matchScore * MATCH_BONUS;
-                    }
-                    else
-                    {
-                        otherCard.chosen = NO;
-                        self.score -= MISMATCH_PENTALTY;
-                    }
-                    break; //stop at 2 cards
-                }
-            }
-            
-            //We set chosen for the card @ index after
-            //so that it doesn't get matched against itself
-            //in the loop
-            card.chosen = YES;
-            self.score -= COST_TO_CHOOSE;
-        }
-    }*/
-    
 }
 
 /*!
@@ -179,6 +153,7 @@ static const int COST_TO_CHOOSE = 1;
         for(Card* compareCard in self.matchBox.chosenCards)
         {
             NSInteger possibleScore = 0; //score for this combination
+            BOOL eligibleForMultiplier = self.matchBox.chosenCards.count > 2;
             //Match against each other card
             for(Card* otherCard in self.matchBox.chosenCards)
             {
@@ -189,9 +164,11 @@ static const int COST_TO_CHOOSE = 1;
                     {
                         possibleScore += matchScore * MATCH_BONUS;
                     }
-                    //we penalize later if we need to
+                    else { eligibleForMultiplier = NO; } //lose streak
+                    
                 }
                 //if this possible score is higher than current max, set it
+                if(eligibleForMultiplier) possibleScore *= PERFECT_MULTIPLIER;
                 maxScore = possibleScore > maxScore ? possibleScore : maxScore;
             }
         }
